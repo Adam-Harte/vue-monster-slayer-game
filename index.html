@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Monster Slayer</title>
+</head>
+
+<body>
+    <!-- root node for vue app -->
+    <div id="app">
+        <div class="hud-container clearfix">
+            <div class="hud left">
+                <h1>Player</h1>
+                <div class="healthbar" :style="{ width: playerHealth + '%' }">
+                    <p class="health-amount">{{ playerHealth }}/100</p>
+                </div>
+            </div>
+            <div class="hud right">
+                <h1>Monster</h1>
+                <div class="healthbar" :style="{ width: monsterHealth + '%' }">
+                    <p class="health-amount">{{ monsterHealth }}/100</p>
+                </div>
+            </div>
+        </div>
+        <div class="game-buttons">
+            <button v-if="!startGame" @click="startGame = !startGame">START GAME</button>
+            <template v-else>
+                <div class="combat-buttons">
+                    <button @click="attack">ATTACK</button>
+                    <button @click="specialAttack">SPECIAL ATTACK</button>
+                    <button @click="heal">HEAL</button>
+                    <button @click="endGame(false)">GIVE UP</button>
+                </div>
+            </template>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
